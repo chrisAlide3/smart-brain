@@ -12,7 +12,7 @@ class Profile extends React.Component {
 
     componentDidMount = () => {
         const { id } = this.props;
-        fetch('http://localhost:3000/profile/'+id, {
+        fetch('https://guarded-ridge-12145.herokuapp.com/profile/'+id, {
             method: 'get',
             headers: {'Content-Type': 'application/json'},
         })
@@ -38,7 +38,7 @@ class Profile extends React.Component {
     }
 
     onSaveProfile = () => {
-        fetch('http://localhost:3000/profile', {
+        fetch('https://guarded-ridge-12145.herokuapp.com/profile', {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -58,7 +58,7 @@ class Profile extends React.Component {
     }
 
     onDeleteProfile = () => {
-        fetch('http://localhost:3000/profile/'+this.props.id, {
+        fetch('https://guarded-ridge-12145.herokuapp.com/profile/'+this.props.id, {
             method: 'delete',
             headers: {'Content-Type': 'application/json'},
         })

@@ -20,7 +20,7 @@ class Register extends React.Component {
 
     onRegisterSubmit = () => {
         const password = document.getElementById('password').value;
-        fetch('http://localhost:3000/register', {
+        fetch('https://guarded-ridge-12145.herokuapp.com/register', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -38,7 +38,7 @@ class Register extends React.Component {
             } else {
                 response.json()
                 .then(userId => {
-                    fetch('http://localhost:3000/profile/'+userId, {
+                    fetch('https://guarded-ridge-12145.herokuapp.com/profile/'+userId, {
                         method: 'get',
                         headers: {'Content-Type': 'application-json'},
                     })

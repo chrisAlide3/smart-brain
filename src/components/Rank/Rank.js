@@ -10,7 +10,7 @@ class Rank extends React.Component {
     }
 
 calculateRank = () => {
-    fetch('http://localhost:3000/userRank/'+this.props.id, {
+    fetch('https://guarded-ridge-12145.herokuapp.com/userRank/'+this.props.id, {
         method: 'get',
         headers: {'Content-Type': 'application/json'}
         })
