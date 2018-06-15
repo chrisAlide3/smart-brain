@@ -65,7 +65,8 @@ class Profile extends React.Component {
             .then(response => response.json())
             .then(status => {
                 if (status === 'deleted') {
-                    this.props.clearUser();
+                    this.props.onRouteChange('logout');
+                    // this.props.clearUser();
                 } else {
                     console.log('Error: user not deleted');
                 }

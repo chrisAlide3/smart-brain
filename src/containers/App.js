@@ -29,7 +29,7 @@ const app = new Clarifai.App({
   apiKey: 'd29dae2355cc4458aa9ad3ba9c0db2e3'
  });
 
- const initialState = {
+const initialState = {
     input: '',
     imageUrl: '',
     box: [],
@@ -43,7 +43,7 @@ const app = new Clarifai.App({
       userEntries: 0, 
       userJoined: '',
     }
-}
+};
 
 class App extends Component {
   // Defining state
@@ -64,9 +64,8 @@ class App extends Component {
     //     userEntries: 0, 
     //     userJoined: '',
     //   }
-    // }
   }
-
+  
   setUser = (user) => {
     this.setState({user: {
       userId: user.id,
@@ -79,20 +78,20 @@ class App extends Component {
     this.setState({isSignedIn: true});
   }
 
-  clearUser = () => {
-    this.setState({user: {
-      userId: 0,
-      userName: '',
-      userEmail: '',
-      userEntries: 0,
-      userJoined: '',
-      }
-    });
-    this.setState({isSignedIn: false});
-    this.setState({imageUrl: ''});
-    this.setState({box: []});
-    this.onRouteChange('signin');
-  }
+  // clearUser = () => {
+  //   this.setState({user: {
+  //     userId: 0,
+  //     userName: '',
+  //     userEmail: '',
+  //     userEntries: 0,
+  //     userJoined: '',
+  //     }
+  //   });
+  //   this.setState({isSignedIn: false});
+  //   this.setState({imageUrl: ''});
+  //   this.setState({box: []});
+  //   this.onRouteChange('signin');
+  // }
 
   onRouteChange = (route) => {
   //   if (route === 'home' || route === 'profile') {
@@ -190,7 +189,7 @@ class App extends Component {
         <Particles className="particles"
               params={particleOptions}
         />
-        <Navigation clearUser={this.clearUser} onRouteChange={this.onRouteChange} isSignedIn={this.state.isSignedIn}/>
+        <Navigation onRouteChange={this.onRouteChange} isSignedIn={this.state.isSignedIn}/>
         {/* We need to wrap the HTML in {} to be able to use ternary statment of route 
             We also need to wrap all in one <div> */}
         { this.state.route === 'signin'
@@ -198,7 +197,7 @@ class App extends Component {
           : this.state.route === 'register'
           ? <Register setUser={this.setUser} onRouteChange={this.onRouteChange}/>
           : this.state.route === 'profile'
-          ? <Profile setUser={this.setUser} clearUser={this.clearUser} onRouteChange={this.onRouteChange} id={this.state.user.userId} />
+          ? <Profile setUser={this.setUser} onRouteChange={this.onRouteChange} id={this.state.user.userId} />
           :
             <div>
             <Logo />
