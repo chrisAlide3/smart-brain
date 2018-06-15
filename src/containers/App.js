@@ -50,22 +50,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = initialState;
-      // this.state = {
-    //   input: '',
-    //   imageUrl: '',
-    //   box: [],
-    //   isSignedIn: false,
-    //   // defining Route state to diplay Signin form or rest of App
-    //   route: 'signin',
-    //   user: {
-    //     userId: 0, 
-    //     userName: '', 
-    //     userEmail: '',
-    //     userEntries: 0, 
-    //     userJoined: '',
-    //   }
   }
-  
+
   setUser = (user) => {
     this.setState({user: {
       userId: user.id,
@@ -78,27 +64,7 @@ class App extends Component {
     this.setState({isSignedIn: true});
   }
 
-  // clearUser = () => {
-  //   this.setState({user: {
-  //     userId: 0,
-  //     userName: '',
-  //     userEmail: '',
-  //     userEntries: 0,
-  //     userJoined: '',
-  //     }
-  //   });
-  //   this.setState({isSignedIn: false});
-  //   this.setState({imageUrl: ''});
-  //   this.setState({box: []});
-  //   this.onRouteChange('signin');
-  // }
-
   onRouteChange = (route) => {
-  //   if (route === 'home' || route === 'profile') {
-  //     this.setState({isSignedIn: true});
-  //   }else {
-  //     this.setState({isSignedIn: false});
-  //   }
     if (route === 'logout') {
       this.setState(initialState);
     }else {
@@ -141,7 +107,6 @@ class App extends Component {
     this.setState({box: faceboxes});
   }
 
-
   onButtonDetect = () => {
     this.setState({imageUrl: this.state.input});
     // Clarify API
@@ -162,9 +127,6 @@ class App extends Component {
         .then(count => {
         // !!!! If we just want to udate one field  of an object with setState we need to use Object.assign function
         this.setState(Object.assign(this.state.user, {userEntries: count})) 
-          // this.setState({user: {
-          //   userEntries: count
-          // }})
         })
         .catch(err => {
           console.log('Undefined user');

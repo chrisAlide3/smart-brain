@@ -66,7 +66,6 @@ class Profile extends React.Component {
             .then(status => {
                 if (status === 'deleted') {
                     this.props.onRouteChange('logout');
-                    // this.props.clearUser();
                 } else {
                     console.log('Error: user not deleted');
                 }
@@ -75,7 +74,6 @@ class Profile extends React.Component {
                 console.log('Database error');
             })
     }
-
 
     render() {
         const {onRouteChange} = this.props;
@@ -92,7 +90,6 @@ class Profile extends React.Component {
                                             type="text" 
                                             name="profileName"  
                                             id="profileName"
-                                            // value={this.state.profileName}
                                             onChange={this.onProfileNameChange}
                                     />
                                 </div>
@@ -102,19 +99,9 @@ class Profile extends React.Component {
                                             type="email" 
                                             name="profileEmail"  
                                             id="profileEmail"
-                                            // value={this.state.profileEmail}
                                             onChange={this.onProfileEmailChange}
                                     />
                                 </div>
-                                {/* <div className="mv3">
-                                    <label className="db fw6 lh-copy f6" forhtml="password">Password</label>
-                                    <input className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
-                                            type="password" 
-                                            name="password"  
-                                            id="password"
-                                            // onChange={this.onRegisterPasswordChange}
-                                    />
-                                </div> */}
                             </fieldset>
                             <div className="mt3">
                             <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" 
