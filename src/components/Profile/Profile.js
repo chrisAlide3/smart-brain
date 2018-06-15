@@ -18,8 +18,8 @@ class Profile extends React.Component {
         })
             .then(response => response.json())
             .then(user => {
-                // document.getElementById('profileName').value = user.name;
-                // document.getElementById('profileEmail').value = user.email;
+                document.getElementById('profileName').value = user.name;
+                document.getElementById('profileEmail').value = user.email;
                 this.setState({profileId: id});
                 this.setState({profileName: user.name});
                 this.setState({profileEmail: user.email});
@@ -91,7 +91,6 @@ class Profile extends React.Component {
                                             type="text" 
                                             name="profileName"  
                                             id="profileName"
-                                            defaultValue={this.state.profileName}
                                             // value={this.state.profileName}
                                             onChange={this.onProfileNameChange}
                                     />
@@ -102,7 +101,6 @@ class Profile extends React.Component {
                                             type="email" 
                                             name="profileEmail"  
                                             id="profileEmail"
-                                            defaultValue={this.state.profileEmail}
                                             // value={this.state.profileEmail}
                                             onChange={this.onProfileEmailChange}
                                     />
