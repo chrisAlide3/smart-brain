@@ -29,26 +29,42 @@ const app = new Clarifai.App({
   apiKey: 'd29dae2355cc4458aa9ad3ba9c0db2e3'
  });
 
+ const initialState = {
+    input: '',
+    imageUrl: '',
+    box: [],
+    isSignedIn: false,
+    // defining Route state to diplay Signin form or rest of App
+    route: 'signin',
+    user: {
+      userId: 0, 
+      userName: '', 
+      userEmail: '',
+      userEntries: 0, 
+      userJoined: '',
+    }
+}
 
 class App extends Component {
   // Defining state
   constructor() {
     super();
-    this.state = {
-      input: '',
-      imageUrl: '',
-      box: [],
-      isSignedIn: false,
-      // defining Route state to diplay Signin form or rest of App
-      route: 'signin',
-      user: {
-        userId: 0, 
-        userName: '', 
-        userEmail: '',
-        userEntries: 0, 
-        userJoined: '',
-      }
-    }
+    this.state = initialState;
+      // this.state = {
+    //   input: '',
+    //   imageUrl: '',
+    //   box: [],
+    //   isSignedIn: false,
+    //   // defining Route state to diplay Signin form or rest of App
+    //   route: 'signin',
+    //   user: {
+    //     userId: 0, 
+    //     userName: '', 
+    //     userEmail: '',
+    //     userEntries: 0, 
+    //     userJoined: '',
+    //   }
+    // }
   }
 
   setUser = (user) => {
@@ -84,7 +100,11 @@ class App extends Component {
   //   }else {
   //     this.setState({isSignedIn: false});
   //   }
-    this.setState({route: route});
+    if (route === 'logout') {
+      this.setState(initialState);
+    }else {
+      this.setState({route: route});
+    }
   }
   
   onInputChange = (event) => {
