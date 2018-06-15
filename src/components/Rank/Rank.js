@@ -1,6 +1,5 @@
 import React from 'react';
 
-// const Rank = ( {id, name, entries} ) => {
 class Rank extends React.Component {
     constructor() {
         super()
