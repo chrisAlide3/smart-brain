@@ -23,17 +23,17 @@ class Rank extends React.Component {
 //         })
 // }
     
-componentDidMount = () => {
-    this.props.calculateRank(this.props.id);
-    // this.calculateRank();
-}
+// componentDidMount = () => {
+//     this.props.calculateRank(this.props.id);
+//     // this.calculateRank();
+// }
 
-componentDidUpdate = () => {
-    this.props.calculateRank(this.props.id);
-}
+// componentDidUpdate = () => {
+//     this.props.calculateRank(this.props.id);
+// }
 
     render() {
-        const { name, entries, rank } = this.props;
+        const { id, name, entries, rank, calculateRank } = this.props;
         return (
             <div>
                 <div className='white f3'>
@@ -43,7 +43,8 @@ componentDidUpdate = () => {
                     {'Your current rank is:'}
                 </div>
                 <div className='white f1'>
-                    {rank}
+                    {calculateRank(id)}
+                    {/* {rank} */}
                     {/* {this.state.rank} */}
                 </div>
             </div>

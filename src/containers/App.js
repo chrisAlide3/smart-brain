@@ -80,11 +80,12 @@ class App extends Component {
         })
         .then(response => response.json())
         .then(rank => {
-            this.setState({userRank: rank.rank});
+          return rank.rank;
+            // this.setState({userRank: rank.rank});
         })
         .catch(err => {
             console.log('get rank failed');
-            
+            return 1;
         })
   }
   
