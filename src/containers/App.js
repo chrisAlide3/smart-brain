@@ -34,7 +34,7 @@ const initialState = {
     imageUrl: '',
     box: [],
     isSignedIn: false,
-    userRank: 1,
+    // userRank: 1,
     // defining Route state to diplay Signin form or rest of App
     route: 'signin',
     user: {
@@ -180,7 +180,7 @@ class App extends Component {
           :
             <div>
               <Logo />
-              <Rank id={this.state.user.userId} name={this.state.user.userName} entries={this.state.user.userEntries} rank={this.state.userRank} calculateRank={this.calculateRank}/>
+              <Rank id={this.state.user.userId} name={this.state.user.userName} entries={this.state.user.userEntries} calculateRank={this.calculateRank}/>
               <ImageLinkForm onInputChange={this.onInputChange} onButtonDetect={this.onButtonDetect} onButtonClear={this.onButtonClear} inputSelectAll={this.inputSelectAll}/>
               <FaceRecognition imageUrl={this.state.imageUrl} box={this.state.box}/>
           </div>

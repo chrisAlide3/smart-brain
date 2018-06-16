@@ -33,7 +33,7 @@ class Rank extends React.Component {
 // }
 
     render() {
-        const { id, name, entries, rank, calculateRank } = this.props;
+        const { id, name, entries, calculateRank } = this.props;
         return (
             <div>
                 <div className='white f3'>
