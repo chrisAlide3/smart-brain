@@ -1,38 +1,39 @@
 import React from 'react';
 
 class Rank extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            rank: 1
-        }
-    }
+    // constructor() {
+    //     super()
+    //     this.state = {
+    //         rank: 1
+    //     }
+    // }
 
-calculateRank = () => {
-    fetch('https://guarded-ridge-12145.herokuapp.com/userRank/'+this.props.id, {
-        method: 'get',
-        headers: {'Content-Type': 'application/json'}
-        })
-        .then(response => response.json())
-        .then(rank => {
-            this.setState({rank: rank.rank});
-        })
-        .catch(err => {
-            console.log('get rank failed');
+// calculateRank = () => {
+//     fetch('https://guarded-ridge-12145.herokuapp.com/userRank/'+this.props.id, {
+//         method: 'get',
+//         headers: {'Content-Type': 'application/json'}
+//         })
+//         .then(response => response.json())
+//         .then(rank => {
+//             this.setState({rank: rank.rank});
+//         })
+//         .catch(err => {
+//             console.log('get rank failed');
             
-        })
-}
-
+//         })
+// }
+    
 componentDidMount = () => {
-    this.calculateRank();
+    this.props.calculateRank(this.props.id);
+    // this.calculateRank();
 }
 
 componentDidUpdate = () => {
-    this.calculateRank();
+    this.props.calculateRank(this.props.id);
 }
-    
+
     render() {
-        const { name, entries } = this.props;
+        const { name, entries, rank } = this.props;
         return (
             <div>
                 <div className='white f3'>
@@ -42,7 +43,8 @@ componentDidUpdate = () => {
                     {'Your current rank is:'}
                 </div>
                 <div className='white f1'>
-                    {this.state.rank}
+                    {rank}
+                    {/* {this.state.rank} */}
                 </div>
             </div>
         );

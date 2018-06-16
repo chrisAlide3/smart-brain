@@ -34,6 +34,7 @@ const initialState = {
     imageUrl: '',
     box: [],
     isSignedIn: false,
+    userRank: 1,
     // defining Route state to diplay Signin form or rest of App
     route: 'signin',
     user: {
@@ -70,6 +71,21 @@ class App extends Component {
     }else {
       this.setState({route: route});
     }
+  }
+
+  calculateRank = (userid) => {
+    fetch('https://guarded-ridge-12145.herokuapp.com/userRank/'+userid, {
+        method: 'get',
+        headers: {'Content-Type': 'application/json'}
+        })
+        .then(response => response.json())
+        .then(rank => {
+            this.setState({userRank: rank.rank});
+        })
+        .catch(err => {
+            console.log('get rank failed');
+            
+        })
   }
   
   onInputChange = (event) => {
@@ -162,10 +178,10 @@ class App extends Component {
           ? <Profile setUser={this.setUser} onRouteChange={this.onRouteChange} id={this.state.user.userId} />
           :
             <div>
-            <Logo />
-            <Rank id={this.state.user.userId} name={this.state.user.userName} entries={this.state.user.userEntries}/>
-            <ImageLinkForm onInputChange={this.onInputChange} onButtonDetect={this.onButtonDetect} onButtonClear={this.onButtonClear} inputSelectAll={this.inputSelectAll}/>
-            <FaceRecognition imageUrl={this.state.imageUrl} box={this.state.box}/>
+              <Logo />
+              <Rank id={this.state.user.userId} name={this.state.user.userName} entries={this.state.user.userEntries} rank={this.state.userRank} calculateRank={this.calculateRank}/>
+              <ImageLinkForm onInputChange={this.onInputChange} onButtonDetect={this.onButtonDetect} onButtonClear={this.onButtonClear} inputSelectAll={this.inputSelectAll}/>
+              <FaceRecognition imageUrl={this.state.imageUrl} box={this.state.box}/>
           </div>
         }
       </div>
