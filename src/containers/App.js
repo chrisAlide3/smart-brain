@@ -63,6 +63,7 @@ class App extends Component {
       }
     });
     this.setState({isSignedIn: true});
+    this.calculateRank(user.id);
   }
 
   onRouteChange = (route) => {
@@ -140,15 +141,16 @@ class App extends Component {
         })
         .then(response => response.json())
         .then(count => {
-        // !!!! If we just want to udate one field  of an object with setState we need to use Object.assign function
-        this.setState(Object.assign(this.state.user, {userEntries: count})) 
-        })
-        .catch(err => {
-          console.log('Undefined user');
-          
+          // !!!! If we just want to udate one field  of an object with setState we need to use Object.assign function
+            this.setState(Object.assign(this.state.user, {userEntries: count})) 
+            })
+          .catch(err => {
+            console.log('Undefined user');
+            
         })
       }
-      this.calculateFaceLocation(response)
+      this.calculateFaceLocation(response);
+      this.calculateRank(this.state.user.userId)
     })
     .catch(err => console.log(err));
   }
